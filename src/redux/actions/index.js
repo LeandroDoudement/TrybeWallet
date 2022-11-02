@@ -33,3 +33,17 @@ export const fetchCurrencies = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const SET_EXPENSES = 'SET_EXPENSES';
+
+export const setExpenses = (expenses) => ({
+  type: SET_EXPENSES,
+  expenses: {
+    value: expenses.value,
+    currency: expenses.currency,
+    description: expenses.description,
+    paymentMethod: expenses.paymentMethod,
+    categoriaDeDespesa: expenses.categoriaDeDespesa,
+
+  },
+});

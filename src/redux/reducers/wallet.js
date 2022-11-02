@@ -1,4 +1,4 @@
-import { REQUEST_CURRENCIES_STARTED, RECEIVE_CURRENCIES } from '../actions';
+import { REQUEST_CURRENCIES_STARTED, RECEIVE_CURRENCIES, SET_EXPENSES } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -20,6 +20,17 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       isFetching: false,
       currencies: action.currencies,
+    });
+  case SET_EXPENSES:
+    return ({
+      ...state,
+      expenses: {
+        value: action.expenses.value,
+        currency: action.expenses.currency,
+        description: action.expenses.description,
+        paymentMethod: action.expenses.paymentMethod,
+        categoriaDeDespesa: action.expenses.categoriaDeDespesa,
+      },
     });
   default: return state;
   }
