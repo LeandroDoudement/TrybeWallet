@@ -124,8 +124,8 @@ class WalletForm extends Component {
             onChange={ (event) => this.handleChange(event) }
           >
             <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de Crédito">Cartão de crédito</option>
-            <option value="Cartão de Débito">Cartão de débito</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
         <label htmlFor="tagInput">

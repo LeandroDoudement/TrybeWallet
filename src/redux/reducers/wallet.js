@@ -22,7 +22,7 @@ const wallet = (state = INITIAL_STATE, action) => {
       currencies: action.currencies,
     });
   case SET_EXPENSES:
-    return ({
+    return {
       ...state,
       expenses: [...state.expenses,
         {
@@ -34,7 +34,7 @@ const wallet = (state = INITIAL_STATE, action) => {
           id: state.expenses.length,
           exchangeRates: action.expenses.exchangeRates,
         }],
-    });
+    };
   default: return state;
   }
 };
