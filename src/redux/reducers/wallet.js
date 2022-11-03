@@ -24,13 +24,16 @@ const wallet = (state = INITIAL_STATE, action) => {
   case SET_EXPENSES:
     return ({
       ...state,
-      expenses: {
-        value: action.expenses.value,
-        currency: action.expenses.currency,
-        description: action.expenses.description,
-        paymentMethod: action.expenses.paymentMethod,
-        categoriaDeDespesa: action.expenses.categoriaDeDespesa,
-      },
+      expenses: [...state.expenses,
+        {
+          value: action.expenses.value,
+          currency: action.expenses.currency,
+          description: action.expenses.description,
+          paymentMethod: action.expenses.paymentMethod,
+          categoriaDeDespesa: action.expenses.categoriaDeDespesa,
+          id: state.expenses.length,
+          exchangeRates: action.expenses.exchangeRates,
+        }],
     });
   default: return state;
   }

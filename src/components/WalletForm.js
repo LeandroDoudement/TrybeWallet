@@ -12,20 +12,44 @@ class WalletForm extends Component {
       description: '',
       paymentMethod: 'Dinheiro',
       categoriaDeDespesa: 'Alimentação',
+      id: 0,
     };
   }
 
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-
     this.setState({
       [name]: value,
     });
   }
 
-  handleClick = () => {
-    const { dispatch, expenses } = this.props;
+  fetchCurrencies = async () => {
+    const url = 'https://economia.awesomeapi.com.br/json/all';
+    const request = await fetch(url);
+    const response = await request.json();
+    delete response.USDT;
+    return response;
+  };
+
+  handleClick = async () => {
+    const { dispatch } = this.props;
+    const exchangeRates = await this.fetchCurrencies();
+    const { value,
+      currency,
+      description,
+      paymentMethod,
+      categoriaDeDespesa,
+      id } = this.state;
+    const expenses = {
+      value,
+      currency,
+      description,
+      paymentMethod,
+      categoriaDeDespesa,
+      id,
+      exchangeRates,
+    };
     dispatch(setExpenses(expenses));
     this.setState({
       value: 0,
@@ -65,7 +89,7 @@ class WalletForm extends Component {
             id="currencySelection"
             data-testid="currency-input"
             value={ currency }
-            onClick={ (event) => this.handleChange(event) }
+            onChange={ (event) => this.handleChange(event) }
           >
             {currencies.map((coin) => (
               <option
@@ -95,7 +119,7 @@ class WalletForm extends Component {
             id="paymentMethod"
             data-testid="method-input"
             value={ paymentMethod }
-            onClick={ (event) => this.handleChange(event) }
+            onChange={ (event) => this.handleChange(event) }
           >
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de Crédito">Cartão de crédito</option>
@@ -109,7 +133,7 @@ class WalletForm extends Component {
             id="tagInput"
             data-testid="tag-input"
             value={ categoriaDeDespesa }
-            onClick={ (event) => this.handleChange(event) }
+            onChange={ (event) => this.handleChange(event) }
           >
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
@@ -117,14 +141,14 @@ class WalletForm extends Component {
             <option value="Transporte">Transporte</option>
             <option value="Saúde">Saúde</option>
           </select>
-          <button
-            type="submit"
-            onClick={ this.handleClick() }
-          >
-            Adicionar despesa
-
-          </button>
         </label>
+        <button
+          type="button"
+          onClick={ this.handleClick }
+        >
+          Adicionar despesa
+
+        </button>
       </form>
     );
   }
@@ -133,18 +157,12 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   isFetching: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   isFetching: state.wallet.isFetching,
-  expenses: {
-    value: state.value,
-    currency: state.currency,
-    description: state.description,
-    paymentMethod: state.paymentMethod,
-    categoriaDeDespesa: state.categoriaDeDespesa,
-  },
 });
 
 export default connect(mapStateToProps)(WalletForm);

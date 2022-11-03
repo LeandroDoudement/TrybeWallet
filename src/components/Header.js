@@ -1,18 +1,43 @@
 import React, { Component } from 'react';
-import store from '../redux/store';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
+  totalSum = () => {
+    const { expenses } = this.props;
+    const sum = expenses.reduce((acc, curr) => {
+      acc += curr.value * curr.exchangeRates[curr.currency].ask;
+      return acc;
+    }, 0);
+    return parseFloat(sum).toFixed(2);
+  };
+
   render() {
-    const state = store.getState();
-    const { email } = state.user;
+    const { email } = this.props;
+    const totalExpenses = this.totalSum();
     return (
       <header>
         <p data-testid="email-field">{email}</p>
-        <p data-testid="total-field">Despesa total: 0</p>
+        <p
+          data-testid="total-field"
+        >
+          {totalExpenses ? `Despesa total: ${totalExpenses}` : 'Despesa total: 0'}
+
+        </p>
         <p data-testid="header-currency-field">BRL</p>
       </header>
     );
   }
 }
 
-export default Header;
+Header.propTypes = {
+  email: PropTypes.string.isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  email: state.user.email,
+  expenses: state.wallet.expenses,
+});
+
+export default connect(mapStateToProps)(Header);

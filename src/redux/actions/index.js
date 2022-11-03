@@ -44,6 +44,8 @@ export const setExpenses = (expenses) => ({
     description: expenses.description,
     paymentMethod: expenses.paymentMethod,
     categoriaDeDespesa: expenses.categoriaDeDespesa,
+    id: expenses.id,
+    exchangeRates: expenses.exchangeRates,
 
   },
 });
