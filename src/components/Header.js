@@ -21,7 +21,7 @@ class Header extends Component {
         <p
           data-testid="total-field"
         >
-          {totalExpenses ? `Despesa total: ${totalExpenses}` : 'Despesa total: 0'}
+          {totalExpenses ? `${totalExpenses}` : ''}
 
         </p>
         <p data-testid="header-currency-field">BRL</p>

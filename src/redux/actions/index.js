@@ -39,12 +39,12 @@ export const SET_EXPENSES = 'SET_EXPENSES';
 export const setExpenses = (expenses) => ({
   type: SET_EXPENSES,
   expenses: {
-    value: expenses.value,
-    currency: expenses.currency,
-    description: expenses.description,
-    paymentMethod: expenses.paymentMethod,
-    categoriaDeDespesa: expenses.categoriaDeDespesa,
     id: expenses.id,
+    value: expenses.value,
+    description: expenses.description,
+    currency: expenses.currency,
+    method: expenses.method,
+    tag: expenses.tag,
     exchangeRates: expenses.exchangeRates,
 
   },

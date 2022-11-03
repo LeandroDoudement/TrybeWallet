@@ -28,9 +28,9 @@ const wallet = (state = INITIAL_STATE, action) => {
         {
           value: action.expenses.value,
           currency: action.expenses.currency,
+          method: action.expenses.method,
+          tag: action.expenses.tag,
           description: action.expenses.description,
-          paymentMethod: action.expenses.paymentMethod,
-          categoriaDeDespesa: action.expenses.categoriaDeDespesa,
           id: state.expenses.length,
           exchangeRates: action.expenses.exchangeRates,
         }],
