@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { deleteExpense } from '../redux/actions';
 
 class Table extends Component {
+  deleteExpense = (id) => {
+    const { dispatch } = this.props;
+    dispatch(deleteExpense(id));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -21,38 +27,30 @@ class Table extends Component {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((element, id) => (
-            <tr key={ id }>
+          {expenses.map((element) => (
+            <tr key={ element.id }>
               <td key={ element.description }>{element.description}</td>
               <td key={ element.tag }>{element.tag}</td>
               <td key={ element.method }>{element.method}</td>
-              <td key={ element.value }>{parseFloat(element.value).toFixed(2) }</td>
-              <td
-                key={ element.exchangeRates[element.currency].name }
-              >
+              <td>
+                {element.value ? parseFloat(element.value).toFixed(2) : '0.00' }
+              </td>
+              <td>
                 {element.exchangeRates[element.currency].name}
               </td>
-              <td
-                key={ element.exchangeRates[element.currency].ask }
-              >
+              <td>
                 { parseFloat(element.exchangeRates[element.currency].ask).toFixed(2) }
               </td>
-              <td
-                key={ element.value * id }
-              >
-                {
-                  parseFloat(element.value
-                      * element.exchangeRates[element.currency].ask)
-                    .toFixed(2)
-                }
+              <td>
+                {parseFloat(element.value * element.exchangeRates[element.currency].ask)
+                  .toFixed(2)}
               </td>
-              <td key={ element.currency }>Real</td>
-              <td
-                key="delete-btn"
-              >
+              <td>Real</td>
+              <td>
                 <button
                   type="button"
                   data-testid="delete-btn"
+                  onClick={ () => this.deleteExpense(element.id) }
                 >
                   Excluir despesa
 
@@ -68,6 +66,7 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

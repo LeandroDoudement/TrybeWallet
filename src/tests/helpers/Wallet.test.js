@@ -59,4 +59,19 @@ describe('Testes do componente Wallet', () => {
     const addExpenseButton = screen.getByRole('button', { name: 'Adicionar despesa' });
     expect(addExpenseButton).toBeInTheDocument();
   });
+  it('Teste se é possivel modificar os componentes', async () => {
+    renderWithRouterAndRedux(<WalletForm />);
+    const descriptionInput = screen.getByTestId('description-input');
+    userEvent.type(descriptionInput, 'teste123');
+    const valueInput = screen.getByTestId('value-input');
+    userEvent.type(valueInput, '123');
+    const methodInput = screen.getByTestId('method-input');
+    userEvent.selectOptions(methodInput, ['Cartão de crédito']);
+    const tagInput = screen.getByTestId('tag-input');
+    userEvent.selectOptions(tagInput, ['Lazer']);
+    expect(descriptionInput.value).toBe('teste123');
+    expect(valueInput.value).toBe('123');
+    expect(screen.getByRole('option', { name: 'Cartão de crédito' }).selected).toBe(true);
+    expect(screen.getByRole('option', { name: 'Lazer' }).selected).toBe(true);
+  });
 });

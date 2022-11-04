@@ -1,4 +1,7 @@
-import { REQUEST_CURRENCIES_STARTED, RECEIVE_CURRENCIES, SET_EXPENSES } from '../actions';
+import { REQUEST_CURRENCIES_STARTED,
+  RECEIVE_CURRENCIES,
+  SET_EXPENSES,
+  DELETE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -34,6 +37,13 @@ const wallet = (state = INITIAL_STATE, action) => {
           id: state.expenses.length,
           exchangeRates: action.expenses.exchangeRates,
         }],
+    };
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.length === 1
+        ? INITIAL_STATE.expenses
+        : state.expenses.filter((expense) => (expense.id !== action.id)),
     };
   default: return state;
   }
