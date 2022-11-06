@@ -4,8 +4,6 @@ import App from '../../App';
 import WalletForm from '../../components/WalletForm';
 import Wallet from '../../pages/Wallet';
 import { renderWithRouterAndRedux } from './renderWith';
-import mockData from './mockData';
-import user from '../../redux/reducers/user';
 
 describe('Testes do componente Wallet', () => {
   const emailDataTestId = 'email-input';
