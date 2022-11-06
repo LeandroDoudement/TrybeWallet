@@ -82,6 +82,7 @@ class WalletForm extends Component {
             name="value"
             value={ value }
             onChange={ (event) => this.handleChange(event) }
+            id="valueInput"
           />
         </label>
         <label htmlFor="currencySelection">
