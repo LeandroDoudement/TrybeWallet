@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setEmail } from '../redux/actions';
+import trybeWallet from '../images/trybeWallet.png';
+import '../styles/Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -33,34 +35,33 @@ class Login extends React.Component {
     const submitVerification = (emailRegex.test(email)
     && password.length >= passwordMinimum);
     return (
-      <>
-        <label htmlFor="emailInput">
-          Digite seu email:
+      <div>
+        <div className="white-box">
+          <img src={ trybeWallet } alt="TrybeWallet logo" className="login-page-logo" />
           <input
             type="email"
             data-testid="email-input"
             onChange={ this.handleChange }
             name="email"
+            placeholder="Email"
           />
-        </label>
-        <label htmlFor="passwordInput">
-          Digite sua senha:
           <input
             type="password"
             data-testid="password-input"
             onChange={ this.handleChange }
             name="password"
+            placeholder="Senha"
           />
-        </label>
-        <button
-          type="button"
-          disabled={ !submitVerification }
-          onClick={ this.handleClick }
-          data-testid="login-submit-button"
-        >
-          Entrar
-        </button>
-      </>
+          <button
+            type="button"
+            disabled={ !submitVerification }
+            onClick={ this.handleClick }
+            data-testid="login-submit-button"
+          >
+            Entrar
+          </button>
+        </div>
+      </div>
     );
   }
 }
