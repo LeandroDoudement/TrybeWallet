@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteExpense } from '../redux/actions';
@@ -24,7 +26,7 @@ class Table extends Component {
             <th>Câmbio utilizado</th>
             <th>Valor convertido</th>
             <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
@@ -48,14 +50,11 @@ class Table extends Component {
               </td>
               <td>Real</td>
               <td>
-                <button
-                  type="button"
-                  data-testid="delete-btn"
+                <FontAwesomeIcon
+                  icon={ faX }
                   onClick={ () => this.deleteExpense(element.id) }
-                >
-                  Excluir despesa
-
-                </button>
+                  className="delete-expense"
+                />
               </td>
             </tr>
           ))}

@@ -6,6 +6,7 @@
   flex-flow: wrap;
   font-size: 14px;
   font-weight: 700;
+  gap: 15px;
   height: 150px;
   justify-content: center;
   line-height: 14px;
@@ -29,15 +30,19 @@ th , td {
   text-align: center;
 }
 
-.wallet-form button {
+.add-expense {
+  align-items: center;
   background: #2fc18c;
   border: 1px solid #2fc18c;
   border-radius: 5px;
   color: white;
+  display: flex;
   font-size: 14px;
   font-weight: 700;
   height: 40px;
+  justify-content: center;
   line-height: 14px;
+  margin: 10px auto;
   text-align: center;
   width: 330px;
 }
