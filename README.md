@@ -1,13 +1,10 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+> TrybeWallet é uma carteira de controle de gastos com conversor de moedas, ao utilizar essa aplicação um usuário deverá ser capaz de:
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+- Adicionar, remover e editar um gasto;
+- Visualizar uma tabelas com seus gastos;
+- Visualizar o total de gastos convertidos para uma moeda de escolha;
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+
+![Screenshot from 2022-12-28 14-57-08](https://user-images.githubusercontent.com/108767928/209853287-2bc84dd9-a601-4480-8a49-b9e61b64bd17.png)
+
+![Screenshot from 2022-12-28 14-56-54](https://user-images.githubusercontent.com/108767928/209853297-5ccd0e0c-bf76-44ce-a25b-81aa520c0f69.png)
