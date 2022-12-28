@@ -37,7 +37,7 @@ class Login extends React.Component {
     return (
       <div>
         <div className="white-box">
-          <img src={ trybeWallet } alt="TrybeWallet logo" className="login-page-logo" />
+          <img src={ trybeWallet } alt="TrybeWallet logo" />
           <input
             type="email"
             data-testid="email-input"

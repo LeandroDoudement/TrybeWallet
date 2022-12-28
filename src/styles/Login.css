@@ -23,7 +23,7 @@ img {
   width: 250px;
 }
 
-input {
+.white-box input {
   background-color: white;
   border: 1px solid #003be5;
   border-radius: 5px;
@@ -31,14 +31,14 @@ input {
   width: 300px;
 }
 
-input::placeholder {
+.white-box input::placeholder {
   color: #003be5;
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
 }
 
-button {
+.white-box button {
   background: #003be5;
   border: 1px solid #003be5;
   border-radius: 5px;
@@ -49,4 +49,8 @@ button {
   line-height: 14px;
   text-align: center;
   width: 300px;
+}
+
+button:disabled {
+  opacity: 0.5;
 }

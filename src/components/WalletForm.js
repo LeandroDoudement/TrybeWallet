@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setExpenses } from '../redux/actions';
+import '../styles/WalletForm.css';
 
 class WalletForm extends Component {
   constructor() {
@@ -73,7 +74,33 @@ class WalletForm extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <form action="">
+      <form action="" className="wallet-form">
+        <label htmlFor="descriptionInput">
+          Descrição da despesa:
+          <input
+            type="text"
+            data-testid="description-input"
+            name="description"
+            value={ description }
+            onChange={ (event) => this.handleChange(event) }
+          />
+        </label>
+        <label htmlFor="tagInput">
+          Categoria de despesa:
+          <select
+            name="tag"
+            id="tagInput"
+            data-testid="tag-input"
+            value={ tag }
+            onChange={ (event) => this.handleChange(event) }
+          >
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saúde">Saúde</option>
+          </select>
+        </label>
         <label htmlFor="valueInput">
           Valor:
           <input
@@ -84,6 +111,20 @@ class WalletForm extends Component {
             onChange={ (event) => this.handleChange(event) }
             id="valueInput"
           />
+        </label>
+        <label htmlFor="method">
+          Método de pagamento:
+          <select
+            name="method"
+            id="method"
+            data-testid="method-input"
+            value={ method }
+            onChange={ (event) => this.handleChange(event) }
+          >
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
+          </select>
         </label>
         <label htmlFor="currencySelection">
           Moeda:
@@ -103,46 +144,6 @@ class WalletForm extends Component {
 
               </option>
             ))}
-          </select>
-        </label>
-        <label htmlFor="descriptionInput">
-          Descrição
-          <input
-            type="text"
-            data-testid="description-input"
-            name="description"
-            value={ description }
-            onChange={ (event) => this.handleChange(event) }
-          />
-        </label>
-        <label htmlFor="method">
-          Método de pagamento:
-          <select
-            name="method"
-            id="method"
-            data-testid="method-input"
-            value={ method }
-            onChange={ (event) => this.handleChange(event) }
-          >
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
-          </select>
-        </label>
-        <label htmlFor="tagInput">
-          Categoria de despesa:
-          <select
-            name="tag"
-            id="tagInput"
-            data-testid="tag-input"
-            value={ tag }
-            onChange={ (event) => this.handleChange(event) }
-          >
-            <option value="Alimentação">Alimentação</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
           </select>
         </label>
         <button

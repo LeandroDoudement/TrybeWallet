@@ -1,0 +1,20 @@
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.total-expenses {
+  color: #003be5;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.email {
+  color: #2fc18c;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+}
